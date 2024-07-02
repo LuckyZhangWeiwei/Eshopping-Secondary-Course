@@ -3,6 +3,7 @@ using Catalog.Application.Commands;
 using Catalog.Application.Queries;
 using Catalog.Application.Responses;
 using Catalog.Core.Specs;
+using Common.Logging.Correlation;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,18 +14,18 @@ public class CatalogController : ApiController
     private readonly IMediator _mediator;
     private readonly ILogger<CatalogController> _logger;
 
-    //private readonly ICorrelationIdGenerator _correlationIdGenerator;
+    private readonly ICorrelationIdGenerator _correlationIdGenerator;
 
     public CatalogController(
         IMediator mediator,
-        ILogger<CatalogController> logger
-    //ICorrelationIdGenerator correlationIdGenerator
+        ILogger<CatalogController> logger,
+        ICorrelationIdGenerator correlationIdGenerator
     )
     {
         _mediator = mediator;
         _logger = logger;
-        //_correlationIdGenerator = correlationIdGenerator;
-        //_logger.LogInformation("CorrelationId {correlationId}:", _correlationIdGenerator.Get());
+        _correlationIdGenerator = correlationIdGenerator;
+        _logger.LogInformation("CorrelationId {correlationId}:", _correlationIdGenerator.Get());
     }
 
     [HttpGet]
@@ -66,7 +67,7 @@ public class CatalogController : ApiController
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "An Exception has occured: {Exception}");
+            _logger.LogError(e, $"An Exception has occured: {e.Message}");
             throw;
         }
     }
@@ -121,13 +122,13 @@ public class CatalogController : ApiController
         return Ok(result);
     }
 
-    //[HttpDelete]
-    //[Route("{id}", Name = "DeleteProduct")]
-    //[ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
-    //public async Task<IActionResult> DeleteProduct(string id)
-    //{
-    //    var query = new DeleteProductByIdQuery(id);
-    //    var result = await _mediator.Send(query);
-    //    return Ok(result);
-    //}
+    [HttpDelete]
+    [Route("{id}", Name = "DeleteProduct")]
+    [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
+    public async Task<IActionResult> DeleteProduct(string id)
+    {
+        var command = new DeleteProductByIdCommand(id);
+        var result = await _mediator.Send(command);
+        return Ok(result);
+    }
 }
