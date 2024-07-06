@@ -26,9 +26,7 @@ namespace Basket.Infrastructure.Repositories
             {
                 return null;
             }
-#pragma warning disable CS8603 // Possible null reference return.
             return JsonConvert.DeserializeObject<ShoppingCart>(basket);
-#pragma warning restore CS8603 // Possible null reference return.
         }
 
         public async Task<ShoppingCart> UpdateBasket(ShoppingCart shoppingCart)
