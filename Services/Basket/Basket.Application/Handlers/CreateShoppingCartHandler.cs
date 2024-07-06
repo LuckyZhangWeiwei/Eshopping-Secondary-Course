@@ -8,7 +8,7 @@ using MediatR;
 namespace Basket.Application.Handlers;
 
 public class CreateShoppingCartHandler
-    : IRequestHandler<CreateShoppingCartCommand, ShoppingCartItemReponse>
+    : IRequestHandler<CreateShoppingCartCommand, ShoppingCartResponse>
 {
     private readonly IBasketRepository _basketRepository;
 
