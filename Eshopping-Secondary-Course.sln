@@ -7,19 +7,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{02
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{6F904448-1743-4A77-B9F8-D2832287D922}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.API", "Catalog\Catalog.API\Catalog.API.csproj", "{70D2E944-B2A6-47F1-A652-85BE7B6193E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.API", "Services\Catalog\Catalog.API\Catalog.API.csproj", "{70D2E944-B2A6-47F1-A652-85BE7B6193E1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.Core", "Catalog\Catalog.Core\Catalog.Core.csproj", "{D66C3E59-A931-4688-874D-06ADF1AED485}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.Core", "Services\Catalog\Catalog.Core\Catalog.Core.csproj", "{D66C3E59-A931-4688-874D-06ADF1AED485}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.Application", "Catalog\Catalog.Application\Catalog.Application.csproj", "{3587D8EB-B681-4FE4-BFFB-0373377FBC4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.Application", "Services\Catalog\Catalog.Application\Catalog.Application.csproj", "{3587D8EB-B681-4FE4-BFFB-0373377FBC4D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.Infrastructure", "Catalog\Catalog.Infrastructure\Catalog.Infrastructure.csproj", "{9ACACC4D-F5C3-4815-9B07-7BD8F86F0E18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.Infrastructure", "Services\Catalog\Catalog.Infrastructure\Catalog.Infrastructure.csproj", "{9ACACC4D-F5C3-4815-9B07-7BD8F86F0E18}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{6C0B275B-16DC-4AA2-9939-7287CA9348A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Logging", "Infrastructure\Common.Logging\Common.Logging.csproj", "{37C00C0E-AB2D-46AE-92A1-FF49DFBF9CD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Logging", "Infrastructure\Common.Logging\Common.Logging.csproj", "{37C00C0E-AB2D-46AE-92A1-FF49DFBF9CD2}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{61F8AAC8-CC00-4EAD-B0DC-FC55F9204612}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{991D27D5-BDC1-499F-83A7-D77FB00CBB13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket.Application", "Services\Basket\Basket.Application\Basket.Application.csproj", "{0785564F-B415-4D2F-8186-B544AE5AE7D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,10 @@ Global
 		{61F8AAC8-CC00-4EAD-B0DC-FC55F9204612}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61F8AAC8-CC00-4EAD-B0DC-FC55F9204612}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61F8AAC8-CC00-4EAD-B0DC-FC55F9204612}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0785564F-B415-4D2F-8186-B544AE5AE7D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0785564F-B415-4D2F-8186-B544AE5AE7D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0785564F-B415-4D2F-8186-B544AE5AE7D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0785564F-B415-4D2F-8186-B544AE5AE7D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +70,8 @@ Global
 		{3587D8EB-B681-4FE4-BFFB-0373377FBC4D} = {6F904448-1743-4A77-B9F8-D2832287D922}
 		{9ACACC4D-F5C3-4815-9B07-7BD8F86F0E18} = {6F904448-1743-4A77-B9F8-D2832287D922}
 		{37C00C0E-AB2D-46AE-92A1-FF49DFBF9CD2} = {6C0B275B-16DC-4AA2-9939-7287CA9348A8}
+		{991D27D5-BDC1-499F-83A7-D77FB00CBB13} = {0260B086-495E-4ACC-AB70-0F712E5E0245}
+		{0785564F-B415-4D2F-8186-B544AE5AE7D5} = {991D27D5-BDC1-499F-83A7-D77FB00CBB13}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B21A5CA0-25EB-4BE4-812E-34244F4DF77A}

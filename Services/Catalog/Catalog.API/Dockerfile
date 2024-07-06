@@ -13,7 +13,7 @@ COPY ["Services/Catalog/Catalog.Application/Catalog.Application.csproj", "Servic
 COPY ["Services/Catalog/Catalog.Core/Catalog.Core.csproj", "Services/Catalog/Catalog.Core/"]
 COPY ["Services/Catalog/Catalog.Infrastructure/Catalog.Infrastructure.csproj", "Services/Catalog/Catalog.Infrastructure/"]
 
-RUN dotnet restore "./Services/Catalog/Catalog.API/Catalog.API.csproj"
+RUN dotnet restore "./ServicesCatalog/Catalog.API/Catalog.API.csproj"
 COPY . .
 WORKDIR "/src/Services/Catalog/Catalog.API"
 RUN dotnet build "./Catalog.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
