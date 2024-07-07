@@ -1,6 +1,6 @@
 ﻿namespace Basket.Application.Responses;
 
-public class ShoppingCartItemReponse
+public class ShoppingCartItemResponse
 {
     public int Quantity { get; set; }
     public string ImageFile { get; set; }
