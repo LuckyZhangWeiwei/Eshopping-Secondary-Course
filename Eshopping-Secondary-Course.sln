@@ -33,13 +33,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basket.Api", "Services\Bask
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Discount", "Discount", "{4018ABD2-51FB-4361-916D-1E8D904723C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discouint.Api", "Services\Discount\Discouint.Api\Discouint.Api.csproj", "{E83E25D8-8CEA-4E81-A1D2-D9B476410B3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discount.Api", "Services\Discount\Discount.Api\Discount.Api.csproj", "{E83E25D8-8CEA-4E81-A1D2-D9B476410B3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discount.Core", "Services\Discount\Discount.Core\Discount.Core.csproj", "{6854488F-D030-4A87-8889-9134D91F6B03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discount.Core", "Services\Discount\Discount.Core\Discount.Core.csproj", "{6854488F-D030-4A87-8889-9134D91F6B03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discount.Application", "Services\Discount\Discount.Application\Discount.Application.csproj", "{7F04CA79-3461-4B63-81FD-7D49CBB123B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discount.Application", "Services\Discount\Discount.Application\Discount.Application.csproj", "{7F04CA79-3461-4B63-81FD-7D49CBB123B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discount.Instructure", "Services\Discount\Discount.Instructure\Discount.Instructure.csproj", "{B5FDFDF6-58A0-46A7-8255-B7C0B0B56F49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discount.Instructure", "Services\Discount\Discount.Instructure\Discount.Instructure.csproj", "{B5FDFDF6-58A0-46A7-8255-B7C0B0B56F49}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
