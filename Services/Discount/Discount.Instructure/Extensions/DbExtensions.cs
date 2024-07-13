@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Npgsql;
 
 namespace Discount.Instructure.Extensions;
 
@@ -29,6 +30,26 @@ public static class DbExtensions
 
     private static void ApplyMigration(IConfiguration config)
     {
-        throw new NotImplementedException();
+        using var connection = new NpgsqlConnection(
+            config.GetValue<string>("DatabaseSettings:ConnectionString")
+        );
+        connection.Open();
+        using var cmd = new NpgsqlCommand() { Connection = connection };
+        cmd.CommandText = "DROP TABLE IF EXISTS Coupon";
+        cmd.ExecuteNonQuery();
+        cmd.CommandText =
+            @"CREATE TABLE Coupon(Id SERIAL PRIMARY KEY, 
+                                                ProductName VARCHAR(500) NOT NULL,
+                                                Description TEXT,
+                                                Amount INT)";
+        cmd.ExecuteNonQuery();
+
+        cmd.CommandText =
+            "INSERT INTO Coupon(ProductName, Description, Amount) VALUES('Adidas Quick Force Indoor Badminton Shoes', 'Shoe Discount', 500);";
+        cmd.ExecuteNonQuery();
+
+        cmd.CommandText =
+            "INSERT INTO Coupon(ProductName, Description, Amount) VALUES('Yonex VCORE Pro 100 A Tennis Racquet (270gm, Strung)', 'Racquet Discount', 700);";
+        cmd.ExecuteNonQuery();
     }
 }
