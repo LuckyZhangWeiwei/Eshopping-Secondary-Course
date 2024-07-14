@@ -2,6 +2,7 @@
 
 using System.Reflection;
 using Catalog.Application.Handlers;
+using Catalog.Application.Mappers;
 using Catalog.Core.Repositories;
 using Catalog.Infrastructure.Data;
 using Catalog.Infrastructure.Repositories;
@@ -37,7 +38,7 @@ public class Startup
             c.SwaggerDoc("v1", new OpenApiInfo { Title = "Catalog.API", Version = "v1" });
         });
 
-        services.AddAutoMapper(typeof(Startup));
+        services.AddAutoMapper(typeof(ProductMappingProfile));
         services.AddMediatR(typeof(CreateProductHandler).GetTypeInfo().Assembly);
 
         services.AddScoped<ICorrelationIdGenerator, CorrelationIdGenerator>();

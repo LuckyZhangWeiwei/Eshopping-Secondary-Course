@@ -35,23 +35,16 @@ public class GetDiscountQueryHandler : IRequestHandler<GetDiscountQuery, CouponM
             );
         }
 
-        var couponModel = new CouponModel
-        {
-            Id = coupon.Id,
-            Amount = coupon.Amount,
-            Description = coupon.Description,
-            ProductName = coupon.ProductName
-        };
-        return couponModel;
+        //var couponModel = new CouponModel
+        //{
+        //    Id = coupon.Id,
+        //    Amount = coupon.Amount,
+        //    Description = coupon.Description,
+        //    ProductName = coupon.ProductName
+        //};
+        //return couponModel;
 
-        //try
-        //{
-        //    var data = _mapper.Map<CouponModel>(coupon);
-        //    return data;
-        //}
-        //catch (Exception ex)
-        //{
-        //    return null;
-        //}
+        var data = _mapper.Map<CouponModel>(coupon);
+        return data;
     }
 }

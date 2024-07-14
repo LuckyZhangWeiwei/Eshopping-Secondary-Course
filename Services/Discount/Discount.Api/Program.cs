@@ -2,6 +2,7 @@ using System.Reflection;
 using Common.Logging.Correlation;
 using Discouint.Api.Services;
 using Discount.Application.Handlers;
+using Discount.Application.Mapper;
 using Discount.Core.Repositories;
 using Discount.Instructure.Extensions;
 using Discount.Instructure.Repositories;
@@ -12,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddMediatR(typeof(CreateDiscountCommandHandler).GetTypeInfo().Assembly);
 builder.Services.AddScoped<ICorrelationIdGenerator, CorrelationIdGenerator>();
 builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
-builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddAutoMapper(typeof(DiscountProfile));
 builder.Services.AddGrpc();
 
 var app = builder.Build();
