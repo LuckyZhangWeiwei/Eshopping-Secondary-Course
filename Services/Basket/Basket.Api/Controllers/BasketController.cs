@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using Basket.Application.Commands;
+using Basket.Application.GrpcService;
 using Basket.Application.Queries;
 using Basket.Application.Responses;
 using Basket.Core.Entities;

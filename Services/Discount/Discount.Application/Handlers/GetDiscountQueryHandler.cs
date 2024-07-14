@@ -35,6 +35,23 @@ public class GetDiscountQueryHandler : IRequestHandler<GetDiscountQuery, CouponM
             );
         }
 
-        return _mapper.Map<CouponModel>(coupon);
+        var couponModel = new CouponModel
+        {
+            Id = coupon.Id,
+            Amount = coupon.Amount,
+            Description = coupon.Description,
+            ProductName = coupon.ProductName
+        };
+        return couponModel;
+
+        //try
+        //{
+        //    var data = _mapper.Map<CouponModel>(coupon);
+        //    return data;
+        //}
+        //catch (Exception ex)
+        //{
+        //    return null;
+        //}
     }
 }

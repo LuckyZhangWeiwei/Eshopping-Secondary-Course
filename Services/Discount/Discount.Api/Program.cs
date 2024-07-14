@@ -9,12 +9,10 @@ using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var assembly = typeof(Program).Assembly;
-
 builder.Services.AddMediatR(typeof(CreateDiscountCommandHandler).GetTypeInfo().Assembly);
 builder.Services.AddScoped<ICorrelationIdGenerator, CorrelationIdGenerator>();
 builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
-builder.Services.AddAutoMapper(assembly);
+builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddGrpc();
 
 var app = builder.Build();

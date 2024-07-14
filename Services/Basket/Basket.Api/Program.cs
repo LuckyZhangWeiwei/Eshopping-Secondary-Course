@@ -1,9 +1,11 @@
 using System.Reflection;
 using Basket.Api.Swagger;
 using Basket.Application.Commands;
+using Basket.Application.GrpcService;
 using Basket.Core.Repositories;
 using Basket.Infrastructure.Repositories;
 using Common.Logging.Correlation;
+using Discount.Grpc.Protos;
 using HealthChecks.UI.Client;
 using MediatR;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -58,11 +60,11 @@ builder.Services.AddScoped<ICorrelationIdGenerator, CorrelationIdGenerator>();
 
 builder.Services.AddAutoMapper(assembly);
 
-//builder.Services.AddScoped<DiscountGrpcService>();
+builder.Services.AddScoped<DiscountGrpcService>();
 
-//builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(o =>
-//    o.Address = new Uri(Configuration["GrpcSettings:DiscountUrl"])
-//);
+builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(o =>
+    o.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"])
+);
 
 //builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 
