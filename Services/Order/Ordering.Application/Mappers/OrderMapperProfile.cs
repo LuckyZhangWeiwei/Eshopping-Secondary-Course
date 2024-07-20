@@ -1,14 +1,22 @@
 ﻿using AutoMapper;
+using Ordering.Application.Commands;
 using Ordering.Application.Responses;
 using Ording.Core.Entities;
 
-namespace Ordering.Application.Mappers
+namespace Ordering.Application.Mappers;
+
+public class OrderMapperProfile : Profile
 {
-    public class OrderMapperProfile : Profile
+    public OrderMapperProfile()
     {
-        public OrderMapperProfile()
-        {
-            CreateMap<Order, OrderResponse>().ReverseMap();
-        }
+        CreateMap<Order, OrderResponse>().ReverseMap();
+
+        CreateMap<Order, CheckoutOrderCommand>().ReverseMap();
+
+        CreateMap<Order, UpdateOrderCommand>().ReverseMap();
+
+        //CreateMap<CheckoutOrderCommand, BasketCheckoutEvent>().ReverseMap();
+
+        //CreateMap<CheckoutOrderCommand, BasketCheckoutEventV2>().ReverseMap();
     }
 }

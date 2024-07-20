@@ -11,16 +11,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\" />
     <Folder Include="Extensions\" />
     <Folder Include="Behaviors\" />
-    <Folder Include="Validators\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="FluentValidation" Version="11.4.0" />
     <PackageReference Include="MediatR" Version="11.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
   </ItemGroup>
 
 </Project>
