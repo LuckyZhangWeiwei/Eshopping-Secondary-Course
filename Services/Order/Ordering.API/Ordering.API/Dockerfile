@@ -12,6 +12,12 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["Services/Order/Ordering.API/Ordering.API/Ordering.API.csproj", "Services/Order/Ordering.API/Ordering.API/"]
+COPY ["Services/Order/Ordering.Application/Ordering.Application.csproj", "Services/Order/Ordering.Application/"]
+COPY ["Services/Order/Ordering.Core/Ordering.Core.csproj", "Services/Order/Ordering.Core/"]
+COPY ["Services/Order/Ordering.Infrastructure/Ordering.Infrastructure.csproj", "Services/Order/Ordering.Infrastructure/"]
+#COPY ["Infrastructure/EventBus.Messages/EventBus.Messages.csproj", "Infrastructure/EventBus.Messages/"]
+COPY ["Infrastructure/Common.Logging/Common.Logging.csproj", "Infrastructure/Common.Logging/"]
+
 RUN dotnet restore "./Services/Order/Ordering.API/Ordering.API/Ordering.API.csproj"
 COPY . .
 WORKDIR "/src/Services/Order/Ordering.API/Ordering.API"

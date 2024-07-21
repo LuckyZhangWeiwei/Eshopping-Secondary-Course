@@ -8,7 +8,7 @@ namespace Ordering.Application.Extensions;
 
 public static class ServiceRegistration
 {
-    public static IServiceCollection AddApplicationService(this IServiceCollection services)
+    public static IServiceCollection AddApplicationServices(this IServiceCollection services)
     {
         var assemblies = Assembly.GetExecutingAssembly();
 

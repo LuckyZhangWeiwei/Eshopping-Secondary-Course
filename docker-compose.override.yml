@@ -26,6 +26,22 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data/
+   
+  orderdb:
+    container_name: orderdb
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Rahul1234567
+    restart: always
+    ports:
+      - "1433:1433"
+      
+  rabbitmq:
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
 
   pgadmin:
     container_name: pgadmin
@@ -87,3 +103,18 @@ services:
       - discountdb
     ports:
       - "9002:80"
+
+  ordering.api:
+    container_name: ordering.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+#      - ASPNETCORE_URLS=http://*:9003
+      - "ConnectionStrings__OrderingConnectionString=Server=orderdb;Database=OrderDb;User Id=sa;Password=Rahul1234567"
+      - "EventBusSettings__HostAddress=amqp://guest:guest@rabbitmq:5672"
+      - "ElasticConfiguration__Uri=http://elasticsearch:9200"
+    depends_on:
+      - orderdb
+      - rabbitmq
+    ports:
+      - "9003:80" 
+
