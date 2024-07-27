@@ -1,10 +1,12 @@
 ﻿using System.Net;
 using Basket.Application.Commands;
-using Basket.Application.GrpcService;
+using Basket.Application.Mappers;
 using Basket.Application.Queries;
 using Basket.Application.Responses;
 using Basket.Core.Entities;
 using Common.Logging.Correlation;
+using EventBus.Messages.Events;
+using MassTransit;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,19 +16,19 @@ namespace Basket.Api.Controllers
     {
         private readonly IMediator _mediator;
 
-        //private readonly IPublishEndpoint _publishEndpoint;
+        private readonly IPublishEndpoint _publishEndpoint;
         private readonly ILogger<BasketController> _logger;
         private readonly ICorrelationIdGenerator _correlationIdGenerator;
 
         public BasketController(
             IMediator mediator,
-            //IPublishEndpoint publishEndpoint,
+            IPublishEndpoint publishEndpoint,
             ILogger<BasketController> logger,
             ICorrelationIdGenerator correlationIdGenerator
         )
         {
             _mediator = mediator;
-            //_publishEndpoint = publishEndpoint;
+            _publishEndpoint = publishEndpoint;
             _logger = logger;
             _correlationIdGenerator = correlationIdGenerator;
             _logger.LogInformation("CorrelationId {correlationId}:", _correlationIdGenerator.Get());
@@ -75,10 +77,12 @@ namespace Basket.Api.Controllers
                 return BadRequest();
             }
 
-            //var eventMesg = BasketMapper.Mapper.Map<BasketCheckoutEvent>(basketCheckout);
-            //eventMesg.TotalPrice = basket.TotalPrice;
-            //eventMesg.CorrelationId = _correlationIdGenerator.Get();
-            //await _publishEndpoint.Publish(eventMesg);
+            var eventMesg = BasketMapper.Mapper.Map<BasketCheckoutEvent>(basketCheckout);
+            eventMesg.TotalPrice = basket.TotalPrice;
+            eventMesg.CorrelationId = _correlationIdGenerator.Get();
+
+            await _publishEndpoint.Publish(eventMesg);
+
             //remove the basket
             var deleteCommand = new DeleteBasketByUserNameCommand(basketCheckout.UserName);
             await _mediator.Send(deleteCommand);

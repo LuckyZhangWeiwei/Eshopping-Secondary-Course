@@ -7,6 +7,7 @@ using Basket.Infrastructure.Repositories;
 using Common.Logging.Correlation;
 using Discount.Grpc.Protos;
 using HealthChecks.UI.Client;
+using MassTransit;
 using MediatR;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Mvc;
@@ -81,19 +82,17 @@ builder
         HealthStatus.Degraded
     );
 
-//builder.Services.AddMassTransit(config =>
-//{
-//    config.UsingRabbitMq(
-//        (ct, cfg) =>
-//        {
-//            cfg.Host(Configuration["EventBusSettings:HostAddress"]);
-//        }
-//    );
-//});
+builder.Services.AddMassTransit(config =>
+{
+    config.UsingRabbitMq(
+        (ct, cfg) =>
+        {
+            cfg.Host(builder.Configuration["EventBusSettings:HostAddress"]);
+        }
+    );
+});
 
-//services.AddMassTransitHostedService();
-
-
+builder.Services.AddMassTransitHostedService();
 
 var app = builder.Build();
 

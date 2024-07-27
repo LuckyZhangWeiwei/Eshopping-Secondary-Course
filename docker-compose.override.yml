@@ -84,11 +84,11 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - "CacheSettings__ConnectionString=basketdb:6379"
       - "GrpcSettings__DiscountUrl=http://discount.api"
-      # - "EventBusSettings__HostAddress=amqp://guest:guest@rabbitmq:5672"
-      # - "ElasticConfiguration__Uri=http://elasticsearch:9200"
+      - "EventBusSettings__HostAddress=amqp://guest:guest@rabbitmq:5672"
+      - "ElasticConfiguration__Uri=http://elasticsearch:9200"
     depends_on:
       - basketdb
-      # - rabbitmq
+      - rabbitmq
     ports:
       - "9001:80"
 
@@ -97,8 +97,8 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - "DatabaseSettings__ConnectionString=Server=discountdb;Port=5432;Database=DiscountDb;User Id=admin;Password=Password@1;"
-      # - "ElasticConfiguration__Uri=http://elasticsearch:9200"
-#      - ASPNETCORE_URLS=http://*:9002          
+      - "ElasticConfiguration__Uri=http://elasticsearch:9200"
+      # - ASPNETCORE_URLS=http://*:9002          
     depends_on:
       - discountdb
     ports:
@@ -108,7 +108,7 @@ services:
     container_name: ordering.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-#      - ASPNETCORE_URLS=http://*:9003
+      # - ASPNETCORE_URLS=http://*:9003
       - "ConnectionStrings__OrderingConnectionString=Server=orderdb;Database=OrderDb;User Id=sa;Password=Rahul1234567"
       - "EventBusSettings__HostAddress=amqp://guest:guest@rabbitmq:5672"
       - "ElasticConfiguration__Uri=http://elasticsearch:9200"
