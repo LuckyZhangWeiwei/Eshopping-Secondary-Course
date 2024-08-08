@@ -6,18 +6,15 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:7066;http://localhost:5019"
+      "applicationUrl": "http://localhost:9010"
     },
     "Container (Dockerfile)": {
       "commandName": "Docker",
-      "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/weatherforecast",
       "environmentVariables": {
-        "ASPNETCORE_URLS": "https://+:443;http://+:80"
+        "ASPNETCORE_URLS": "http://+:80"
       },
-      "publishAllPorts": true,
-      "useSSL": true
+      "publishAllPorts": true
     }
-  },
-  "$schema": "https://json.schemastore.org/launchsettings.json"
+  }
 }
